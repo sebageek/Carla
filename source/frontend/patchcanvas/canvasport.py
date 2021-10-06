@@ -291,8 +291,7 @@ class CanvasPort(QGraphicsItem):
         if len(conn_list) > 0:
             for conn_id, group_id, port_id in conn_list:
                 act_x_disc = discMenu.addAction(CanvasGetFullPortName(group_id, port_id))
-                act_x_disc.setData(conn_id)
-                act_x_disc.triggered.connect(canvas.qobject.PortContextMenuDisconnect)
+                act_x_disc.triggered.connect(lambda: canvas.qobject.PortContextMenuDisconnect([conn_id]))
         else:
             act_x_disc = discMenu.addAction("No connections")
             act_x_disc.setEnabled(False)
